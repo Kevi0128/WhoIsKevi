@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Kevi</title>
+    <link type="text/css" rel="stylesheet" href="css/page.css">
+    <script type="text/javascript" src="js/jquery_3_5_1.js"></script>
+    <script type="text/javascript" src="js/command.js"></script>
+</head>
+<body style="background-color: black;">
+<div>
+    <span>kevi@<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>:~#</span>
+    <span class="tipOut">hi, this is kevi`s page</span>
+</div>
+<div>
+    <span>kevi@<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>:~#</span>
+    <span class="tipOut">you can use 'ls' to see the kevi`s file</span>
+</div>
+<div>
+    <a id="host" class="resa" >
+        kevi@<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>:~#
+    </a>
+    <span class="tipOut">
+        <input id="command" type="text" class="cmdClass" value=""/>
+        <input id="copyIn" type="hidden" />
+    </span>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+@charset "utf-8";
+body{
+    background-color: black;
+}
+div{
+    color: white;
+}
+.tipOut{
+    margin-left: 10px;
+}
+.cmdClass{
+    color:white;
+    margin:5px 0px;
+    width:80%;
+    background-color:black;
+    border:0px;
+    display:inline-block;
+    outline:none;
+}
