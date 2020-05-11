@@ -8,22 +8,24 @@
     <script type="text/javascript" src="js/command.js"></script>
 </head>
 <body style="background-color: black;">
-<div>
-    <span>kevi@<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>:~#</span>
-    <span class="tipOut">hi, this is kevi`s page</span>
+<div id="result">
+    <div>
+        <span>kevi@(<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>):~#</span>
+        <span>hi, this is kevi`s page</span>
+    </div>
+    <div>
+        <span>kevi@(<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>):~#</span>
+        <span>you can use 'ls' to see the kevi`s file</span>
+    </div>
+
 </div>
+
 <div>
-    <span>kevi@<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>:~#</span>
-    <span class="tipOut">you can use 'ls' to see the kevi`s file</span>
-</div>
-<div>
-    <a id="host" class="resa" >
-        kevi@<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>:~#
+    <a id="host" class="resA" >
+        kevi@(<span id="time" th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>):~#
     </a>
-    <span class="tipOut">
-        <input id="command" type="text" class="cmdClass" value=""/>
-        <input id="copyIn" type="hidden" />
-    </span>
+    <input id="command" type="text" class="cmdClass" value=""/>
+    <input id="copyIn" type="hidden" />
 </div>
 </body>
 </html>
