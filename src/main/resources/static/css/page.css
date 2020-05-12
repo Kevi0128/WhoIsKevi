@@ -21,6 +21,12 @@ a{
     display:inline-block;
     vertical-align: top;
 }
+.inline{
+    margin-top: 0;
+    margin-left: 0;
+    display:inline-block;
+    vertical-align: top;
+}
 .tip{
     margin-top: 0;
     margin-left: 0;
