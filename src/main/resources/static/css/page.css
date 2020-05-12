@@ -6,11 +6,19 @@ div{
     color: white;
     margin-top: 5px;
 }
+.info{
+    margin-top: 0;
+    display:inline-block;
+    vertical-align: top;
+}
 .tipOut{
     margin-left: 10px;
 }
 .tipOutRet{
     margin-left: 5px;
+    margin-top: 0;
+    display:inline-block;
+    vertical-align: top;
 }
 .cmdClass{
     color:white;

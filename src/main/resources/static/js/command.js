@@ -39,9 +39,9 @@ function commandBind(){
             //构建一个div
             var d = $('<div>');
             //构建提示
-            var tip = '<span>kevi@(<span>'+ (new Date()).format("yyyy/MM/dd HH:mm:ss") +'</span>):~#</span>';
+            var tip = '<div class="info">kevi@(<span>'+ (new Date()).format("yyyy/MM/dd HH:mm:ss") +'</span>):~#</div>';
             d.append(tip);
-            var s=$('<span>');
+            var s=$('<div class="tipOutRet">');
             var value=$('#command').val();
             s.text(" " + value);
             d.append(s)
@@ -58,7 +58,8 @@ function commandBind(){
                 last=0;
             }
             sendCMD(value);
-
+            //下滑滚动条
+            goTheCommand();
         }else if(event.keyCode == "38"){
             if(last<=lastCMD.length-1)
             {
@@ -100,13 +101,15 @@ function sendCMD(code)
             //构建一个div
             var d = $('<div>');
             //构建提示
-            var tip = '<span>kevi@(<span>'+ (new Date()).format("yyyy/MM/dd HH:mm:ss") +'</span>):~#</span>';
+            var tip = '<div class="info">kevi@(<span>'+ (new Date()).format("yyyy/MM/dd HH:mm:ss") +'</span>):~#</div>';
             d.append(tip);
             //具体返回内容
-            var s = $('<span class="tipOutRet">');
-            s.html(res.code);
+            var s = $('<div class="tipOutRet">');
+            s.html(res.info);
             d.append(s);
             $("#result").append(d);
+            //下滑滚动条
+            goTheCommand(res.move);
         },
         error: function (res) {
             //todo 详细的错误处理
@@ -143,4 +146,15 @@ Date.prototype.format = function(fmt){
         }
     }
     return fmt;
+}
+
+function goTheCommand(move) {
+    //滚动到页面底部
+    var h = $("#command").offset().top;
+    // $(document).scrollTop(h);
+    //为了保证跳到底部,手动校准
+    if (move != null){
+        h += move;
+    }
+    $("html,body").animate({ scrollTop: h}, 300);
 }

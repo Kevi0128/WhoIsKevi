@@ -2,24 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--稍微支持一下手机页面-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <title>Kevi</title>
     <link type="text/css" rel="stylesheet" href="css/page.css">
     <script type="text/javascript" src="js/jquery_3_5_1.js"></script>
     <script type="text/javascript" src="js/command.js"></script>
 </head>
 <body style="background-color: black;">
+<!--结果展示区-->
 <div id="result">
     <div>
-        <span>kevi@(<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>):~#</span>
-        <span>hi, this is kevi`s page</span>
+        <div class="info">kevi@(<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>):~#</div>
+        <div class="info">hi, this is kevi`s page</div>
     </div>
     <div>
-        <span>kevi@(<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>):~#</span>
-        <span>you can use 'ls' to see the kevi`s file</span>
+        <div class="info">kevi@(<span th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>):~#</div>
+        <div class="info">you can use 'help' to get the code list</div>
     </div>
-
 </div>
-
+<!--指令输入区-->
 <div>
     <a id="host" class="resA" >
         kevi@(<span id="time" th:text="*{#dates.format(time,'yyyy/MM/dd HH:mm:ss')}"/>):~#

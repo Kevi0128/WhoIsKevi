@@ -54,7 +54,7 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <!--如果没有该项配置,整个devtools不会起作用-->
-            <optional>true</optional>
+            <optional>false</optional>
         </dependency>
 
         <!--        语句糖工具-->
