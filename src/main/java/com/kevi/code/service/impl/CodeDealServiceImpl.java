@@ -56,7 +56,7 @@ public class CodeDealServiceImpl implements CodeDealService {
         //返回对应指令操作
         switch (code){
             case BaseCmdCode.Help:
-                String msg = "<div class='info'>this project not finish, just some code can use:&nbsp;</div><div class='info'>";
+                String msg = "<div >this project not finish, just some code can use:&nbsp;</div><div class='info'>";
                 String baseCodeList = "";
                 for (String c : BaseCmdCode.HelpList){
                     baseCodeList = baseCodeList + c + "</br>";
