@@ -69,7 +69,13 @@ public class CodeDealServiceImpl implements CodeDealService {
 
     private JSONObject fileCodeDeal(String code){
         JSONObject result = new JSONObject();
-
+        //返回对应指令文件或文件地址
+        switch (code){
+            case BaseCmdCode.GetProjectInfo:
+                String msg = "you can look or get this project code in github: https://github.com/Kevi0128/WhoIsKevi";
+                result.put("info", msg);
+                break;
+        }
         return result;
     }
 

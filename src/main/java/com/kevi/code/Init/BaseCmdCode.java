@@ -16,6 +16,8 @@ public class BaseCmdCode {
     /********************************* 实际会使用的指令 *************************************/
     //动作指令
     public static final String Help = "help";              //帮助
+    //文件指令
+    public static final String GetProjectInfo = "getProjectInfo";              //帮助
     //彩蛋指令
     public static final String CocaCola = "CocaCole";      //可口可乐
     public static final String PepsiCola = "PepsiCole";    //百事可乐
@@ -33,6 +35,7 @@ public class BaseCmdCode {
         if (CodeList == null || CodeList.isEmpty()){
             CodeList = new ArrayList<>();
             CodeList.add(Help);
+            CodeList.add(GetProjectInfo);
             CodeList.add(CocaCola);
             CodeList.add(PepsiCola);
         }
@@ -42,6 +45,7 @@ public class BaseCmdCode {
         }
         if (FileCodeList == null || FileCodeList.isEmpty()){
             FileCodeList = new ArrayList<>();
+            FileCodeList.add(GetProjectInfo);
         }
         if (BonusSceneCodeList == null || BonusSceneCodeList.isEmpty()){
             BonusSceneCodeList = new ArrayList<>();

@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.kevi.code</groupId>
     <artifactId>whoiskevi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.5-SNAPSHOT</version>
     <name>WhoIsKevi</name>
     <description>kevi recommend himself</description>
 
