@@ -39,7 +39,7 @@ function commandBind(){
             //构建一个div
             var d = $('<div>');
             //构建提示
-            var tip = '<div class="info">kevi@(<span>'+ (new Date()).format("yyyy/MM/dd HH:mm:ss") +'</span>):~#</div>';
+            var tip = '<div class="tip">kevi@(<span>'+ (new Date()).format("yyyy/MM/dd HH:mm:ss") +'</span>):~#</div>';
             d.append(tip);
             var s=$('<div class="tipOutRet">');
             var value=$('#command').val();
@@ -101,8 +101,8 @@ function sendCMD(code)
             //构建一个div
             var d = $('<div>');
             //构建提示
-            var tip = '<div class="info">kevi@(<span>'+ (new Date()).format("yyyy/MM/dd HH:mm:ss") +'</span>):~#</div>';
-            d.append(tip);
+            // var tip = '<div class="info">kevi@(<span>'+ (new Date()).format("yyyy/MM/dd HH:mm:ss") +'</span>):~#</div>';
+            // d.append(tip);
             //具体返回内容
             var s = $('<div class="tipOutRet">');
             s.html(res.info);
