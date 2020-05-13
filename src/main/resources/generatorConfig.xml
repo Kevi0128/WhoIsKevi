@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+<!--    jdbc驱动包位置-->
+<!--    <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />-->
+
+
+    <context id="default" targetRuntime="MyBatis3">
+
+<!--        创建java类时取消自动生成的注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+<!--        数据库连接配置-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://www.kevi0128.cn:3306/KeviWeb?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"
+                        userId="guest"
+                        password="keviguest">
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+
+<!--        把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和NUMERIC 类型解析为java.math.BigDecimal-->
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.kevi.code.entity" targetProject="./src/main/java">
+<!--            是否允许子包，即targetPackage.schemaName.tableName-->
+            <property name="enableSubPackages" value="true" />
+<!--            是否对字符类型的列的数据进行trim操作-->
+            <property name="trimStrings" value="true" />
+<!--            是否对生成实体添加构造函数-->
+            <property name="constructorBased" value="true"/>
+<!--            生成实体是否不可改变，即只有get方法，没有set方法-->
+            <property name="immutable" value="false"/>
+        </javaModelGenerator>
+
+<!--        生成的Mapper文件的放置路径-->
+        <sqlMapGenerator targetPackage="mybatis"  targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+<!--        生成配置-->
+<!--        type=ANNOTATEDMAPPER, 生成java实体和基于注解的Mapper对象-->
+<!--        type=MIXEDMAPPER, 生成基于注解的java实体和相应的Mapper对象-->
+<!--        type=XMLMAPPER, 生成SQLMap XML文件和独立的Mapper接口-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kevi.code.dao"  targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+<!--        <table schema="DB2ADMIN" tableName="ALLTYPES" domainObjectName="Customer" >-->
+<!--            <property name="useActualColumnNames" value="true"/>-->
+<!--            <generatedKey column="ID" sqlStatement="DB2" identity="true" />-->
+<!--            <columnOverride column="DATE_FIELD" property="startDate" />-->
+<!--            <ignoreColumn column="FRED" />-->
+<!--            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />-->
+<!--        </table>-->
+
+<!--        只指明需要生成的表的ID -->
+        <table tableName="kevi_work_info" domainObjectName="KeviWorkInfo" schema="KeviWeb">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
