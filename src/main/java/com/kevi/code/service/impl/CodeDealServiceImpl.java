@@ -6,6 +6,7 @@ import com.kevi.code.Init.KeviWorkInfo;
 import com.kevi.code.dao.KeviWorkInfoMapper;
 import com.kevi.code.dao.query.KeviWorkInfoCustomQuery;
 import com.kevi.code.entity.KeviWorkInfoExample;
+import com.kevi.code.entity.ResultParam;
 import com.kevi.code.service.CodeDealService;
 import com.kevi.code.utils.KeviTool;
 import org.slf4j.Logger;
@@ -49,7 +50,7 @@ public class CodeDealServiceImpl implements CodeDealService {
                 default:
                     logger.info("【CodeType】不明类型指令:{}", code);
                     String msg = "input code '"+ code +"' isn`t executable command, please use 'help' to get code list.";
-                    result.put("info", msg);
+                    result = ResultParam.normalInfo(msg);
             }
         }else {
             //不是指令
@@ -58,7 +59,7 @@ public class CodeDealServiceImpl implements CodeDealService {
             String msg = "input code '"+ code +"' isn`t executable command, please use 'help' to get code list.";
             //中午
 //            String msg = "输入指令'"+ code +"'不是可执行命令，请使用'help'获取可执行指令列表";
-            result.put("info", msg);
+            result = ResultParam.normalInfo(msg);
         }
         return result;
     }
@@ -74,7 +75,7 @@ public class CodeDealServiceImpl implements CodeDealService {
                     baseCodeList = baseCodeList + c + "</br>";
                 }
                 msg = msg + baseCodeList + "</div>";
-                result.put("info", msg);
+                result = ResultParam.normalInfo(msg);
                 break;
         }
         return result;
@@ -103,8 +104,9 @@ public class CodeDealServiceImpl implements CodeDealService {
                 }catch (Exception e){
                     logger.error("【简介信息】获取指令kevi对应信息失败", e);
                 }
-                result.put("info", kevi_info);
-                result.put("move", 500);
+//                result.put("info", kevi_info);
+//                result.put("move", 500);
+                result = ResultParam.normalInfo(kevi_info, 500);
                 break;
             case BaseCmdCode.Study:
                 //先放着代码预设默认值，预防数据库获取不到数据
@@ -120,7 +122,8 @@ public class CodeDealServiceImpl implements CodeDealService {
                 }catch (Exception e){
                     logger.error("【简介信息】获取指令study对应信息失败", e);
                 }
-                result.put("info", study_info);
+//                result.put("info", study_info);
+                result = ResultParam.normalInfo(study_info);
                 break;
             case BaseCmdCode.Worked:
                 //先放着代码预设默认值，预防数据库获取不到数据
@@ -133,7 +136,8 @@ public class CodeDealServiceImpl implements CodeDealService {
                 }catch (Exception e){
                     logger.error("【简介信息】获取指令worked对应信息失败", e);
                 }
-                result.put("info", worked_info);
+//                result.put("info", worked_info);
+                result = ResultParam.normalInfo(worked_info);
                 break;
             case BaseCmdCode.Project:
                 //先放着代码预设默认值，预防数据库获取不到数据
@@ -146,11 +150,13 @@ public class CodeDealServiceImpl implements CodeDealService {
                 }catch (Exception e){
                     logger.error("【简介信息】获取指令study对应信息失败", e);
                 }
-                result.put("info", project_info);
+//                result.put("info", project_info);
+                result = ResultParam.normalInfo(project_info);
                 break;
             case BaseCmdCode.GetThisProjectInfo:
                 String msg = "you can look or get this project source code in github: https://github.com/Kevi0128/WhoIsKevi";
-                result.put("info", msg);
+//                result.put("info", msg);
+                result = ResultParam.normalInfo(msg);
                 break;
         }
         return result;
@@ -174,8 +180,9 @@ public class CodeDealServiceImpl implements CodeDealService {
                 img = img + "img/PepsiCola.png' alt='"+ BaseCmdCode.PepsiCola +"'>";
                 break;
         }
-        result.put("info", img);
-        result.put("move", 2134);
+//        result.put("info", img);
+//        result.put("move", 2134);
+        result = ResultParam.normalInfo(img, 2134);
         return result;
     }
 
