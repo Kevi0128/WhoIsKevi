@@ -30,12 +30,13 @@ public class CodeDealServiceImpl implements CodeDealService {
     //todo 返回JSON包装一下
     @Override
     public JSONObject dealCode(String code) throws Exception {
+        BaseCmdCode baseCmdCode = BaseCmdCode.getInstance();
         JSONObject result = new JSONObject();
         //判断收到的是否是指令
-        if (BaseCmdCode.checkCode(code)){
+        if (baseCmdCode.checkCode(code)){
             //是指令
             //判断是哪种指令
-            int type = BaseCmdCode.checkCodeType(code);
+            int type = baseCmdCode.checkCodeType(code);
             //跳转至对应具体处理办法中
             switch (type){
                 case BaseCmdCode.active_code:
@@ -65,23 +66,40 @@ public class CodeDealServiceImpl implements CodeDealService {
     }
 
     private JSONObject activeCodeDeal(String code){
+        BaseCmdCode baseCmdCode = BaseCmdCode.getInstance();
         JSONObject result = new JSONObject();
         //返回对应指令操作
         switch (code){
             case BaseCmdCode.Help:
                 String msg = "<div class='inline'>this project not finish, just some code can use:&nbsp;</div><div class='info'>";
                 String baseCodeList = "";
-                for (String c : BaseCmdCode.HelpList){
+                for (String c : baseCmdCode.getHelpList()){
                     baseCodeList = baseCodeList + c + "</br>";
                 }
                 msg = msg + baseCodeList + "</div>";
                 result = ResultParam.normalInfo(msg);
                 break;
+            case BaseCmdCode.DailyCode:
+                String diary = "<p class='textInfo'>2020-05-30</p>" +
+                        "<p class='textInfo'>最近一周开始复习设计模式</p>" +
+                        "<p class='textInfo'>怎么说呢？</p>" +
+                        "<p class='textInfo'>其实这不算是我主动想起了要复习，而是这段时间想换工作，拿到了一份面试邀请，被人问到了</p>" +
+                        "<p class='textInfo'>能理解那种耻辱吗？</p>" +
+                        "<p class='textInfo'>明明是习以为常的做法，考虑代码的时候也会那么去考虑，但是呢，应为太久没复习理论知识了，想说说不出来啊</p>" +
+                        "<p class='textInfo'>\"我不知道\"</p>" +
+                        "<p class='textInfo'>我居然只能这么回答...</p>" +
+                        "<p class='textInfo'>复习呗，顺带手动写一下，明确下记忆</p>" +
+                        "<p class='textInfo'>设计模式 <a href='https://github.com/Kevi0128/JavaDesignPatterns' target='_blank'>https://github.com/Kevi0128/JavaDesignPatterns</a></p>" +
+                        "</br>" +
+                        "<p class='textInfo'>Temp（一些临时的碎碎念）</p>" +
+                        "<p class='textInfo'>这个类似日记的东西，我其实不应该放在动作指令列表的，但是文件列表暂时被我的简历占了，那么就临时放这吧（也有点希望我自己坚持下去的意思）</p>" +
+                        "<p class='textInfo'>而且设计还有待优化啊</p>";
+                result = ResultParam.normalInfo(diary,500);
+                break;
         }
         return result;
     }
-
-    //todo 具体信息从数据库获取
+    
     private JSONObject fileCodeDeal(String code){
         JSONObject result = new JSONObject();
         //返回对应指令文件或文件地址
@@ -154,7 +172,7 @@ public class CodeDealServiceImpl implements CodeDealService {
                 result = ResultParam.normalInfo(project_info);
                 break;
             case BaseCmdCode.GetThisProjectInfo:
-                String msg = "you can look or get this project source code in github: https://github.com/Kevi0128/WhoIsKevi";
+                String msg = "you can look or get this project source code in github: <a href='https://github.com/Kevi0128/WhoIsKevi' target='_blank'>https://github.com/Kevi0128/WhoIsKevi</a>";
 //                result.put("info", msg);
                 result = ResultParam.normalInfo(msg);
                 break;
